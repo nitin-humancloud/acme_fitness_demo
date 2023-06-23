@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: users-redis
   labels:
-    app: acmefit
+    app: users-redis
     service: users-redis
 spec:
   ports:
     - port: 6379
       name: redis-users
   selector:
-    app: acmefit
+    app: users-redis
     service: users-redis
 ---
 apiVersion: apps/v1
@@ -18,18 +18,18 @@ kind: Deployment
 metadata:
   name: users-redis
   labels:
-    app: acmefit
+    app: users-redis
     service: users-redis
 spec:
   selector:
     matchLabels:
-      app: acmefit  # has to match .spec.template.metadata.labels
+      app: users-redis  # has to match .spec.template.metadata.labels
       service: users-redis
   replicas: 1
   template:
     metadata:
       labels:
-        app: acmefit  # has to match .spec.selector.matchLabels
+        app: users-redis  # has to match .spec.selector.matchLabels
         service: users-redis
     spec:
       containers:

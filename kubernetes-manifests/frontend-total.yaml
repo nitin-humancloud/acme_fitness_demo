@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: frontend
   labels:
-    app: acmefit
+    app: frontend
     service: frontend
 spec:
   ports:
@@ -13,7 +13,7 @@ spec:
       targetPort: 3000
 #      nodePort: 30430
   selector:
-    app: acmefit
+    app: frontend
     service: frontend
   type: LoadBalancer
 ---
@@ -22,12 +22,12 @@ kind: Deployment
 metadata:
   name: frontend
   labels:
-    app: acmefit
+    app: frontend
     service: frontend
 spec:
   selector:
     matchLabels:
-      app: acmefit
+      app: frontend
       service: frontend
   strategy:
     type: Recreate
@@ -35,7 +35,7 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit
+        app: frontend
         service: frontend
     spec:
       containers:

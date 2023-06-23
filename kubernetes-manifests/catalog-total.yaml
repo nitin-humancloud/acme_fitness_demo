@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: catalog
   labels:
-    app: acmefit
+    app: catalog
     service: catalog
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
       protocol: TCP
       port: 8082
   selector:
-    app: acmefit
+    app: catalog
     service: catalog
 ---
 apiVersion: apps/v1
@@ -19,12 +19,12 @@ kind: Deployment
 metadata:
   name: catalog
   labels:
-    app: acmefit
+    app: catalog
     service: catalog
 spec:
   selector:
     matchLabels:
-      app: acmefit
+      app: catalog
       service: catalog
   strategy:
     type: Recreate
@@ -32,7 +32,7 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit
+        app: catalog
         service: catalog
     spec:
       volumes:

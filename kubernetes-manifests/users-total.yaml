@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: users
   labels:
-    app: acmefit
+    app: users
     service: users
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
       protocol: TCP
       port: 8083
   selector:
-    app: acmefit
+    app: users
     service: users
 ---
 apiVersion: apps/v1
@@ -19,12 +19,12 @@ kind: Deployment
 metadata:
   name: users
   labels:
-    app: acmefit
+    app: users
     service: users
 spec:
   selector:
     matchLabels:
-      app: acmefit
+      app: users
       service: users
   strategy:
     type: Recreate
@@ -32,7 +32,7 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit
+        app: users
         service: users
     spec:
       volumes:

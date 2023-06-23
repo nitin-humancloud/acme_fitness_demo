@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: catalog-mongo
   labels:
-    app: acmefit
+    app: catalog-mongo
     service: catalog-db
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
       name: mongo-catalog
       protocol: TCP
   selector:
-    app: acmefit
+    app: catalog-mongo
     service: catalog-db
 ---
 apiVersion: apps/v1
@@ -19,18 +19,18 @@ kind: Deployment
 metadata:
   name: catalog-mongo
   labels:
-    app: acmefit
+    app: catalog-mongo
     service: catalog-db
 spec:
   selector:
     matchLabels:
-      app: acmefit  # has to match .spec.template.metadata.labels
+      app: catalog-mongo  # has to match .spec.template.metadata.labels
       service: catalog-db
   replicas: 1
   template:
     metadata:
       labels:
-        app: acmefit  # has to match .spec.selector.matchLabels
+        app: catalog-mongo  # has to match .spec.selector.matchLabels
         service: catalog-db
     spec:
       containers:
