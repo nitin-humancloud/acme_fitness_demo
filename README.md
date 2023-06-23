@@ -1,4 +1,4 @@
-# Demo of ACME Fitness Shop
+# Demo of ACME Fitness Shop...
 
 ## Getting Started
 
